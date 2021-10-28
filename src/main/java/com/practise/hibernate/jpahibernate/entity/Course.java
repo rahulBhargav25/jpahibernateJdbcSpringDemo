@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-//
+
 @NamedQueries(
         value= {
                 @NamedQuery(name="query_get_all_courses",query="Select c From Course c"),
