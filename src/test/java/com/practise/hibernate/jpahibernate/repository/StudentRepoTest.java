@@ -1,5 +1,6 @@
 package com.practise.hibernate.jpahibernate.repository;
 
+import com.practise.hibernate.jpahibernate.entity.Course;
 import com.practise.hibernate.jpahibernate.entity.Passport;
 import com.practise.hibernate.jpahibernate.entity.Student;
 import org.junit.jupiter.api.Test;
@@ -63,6 +64,18 @@ public class StudentRepoTest {
         studentRepo.deleteById(2001L);
 
     }
+
+
+    @Test
+    @Transactional
+    public void retrieveStudentsFromCourses() {
+        Course course = em.find(Course.class, 1003L);
+        logger.info("course -> {} ", course);
+        logger.info("student -> {} ",course.getStudents());
+    }
+
+
+
 
 
 
