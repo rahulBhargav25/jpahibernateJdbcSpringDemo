@@ -1,6 +1,8 @@
 package com.practise.hibernate.jpahibernate.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -14,6 +16,14 @@ public class Student {
 
     @Column(nullable = false)
     private String name;
+
+    @ManyToMany
+    @JoinTable(name="STUDENT_COURSE",
+        joinColumns = @JoinColumn(name = "STUDENT_ID"),
+        inverseJoinColumns = @JoinColumn(name="COURSE_ID")
+    )
+    private List<Course> courses = new ArrayList<>();
+
 
     public Student(Long id, String name) {
         this.id = id;
@@ -51,6 +61,14 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void addCourses(Course course) {
+        this.courses.add(course);
     }
 
     @Override
